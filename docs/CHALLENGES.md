@@ -2,8 +2,6 @@
 
 Problems encountered while building **Cyber Hero**, and how they were resolved.
 
-> **On evidence.** Where a claim can be checked against the code or commit history, the file or commit is cited.
-
 ---
 
 ## 1. Three different genres, one progression system
@@ -63,52 +61,6 @@ Right-to-left support is a rendering concern, not a translation one, and it has 
 
 ---
 
-## 3. Adding tests to a project already in motion
-
-**Context**
-By March 2025 the game was largely built, and the loss system had become the riskiest thing to modify — hearts are decremented from every stage, and a mistake there stays invisible until a player reaches a fail state.
-
-**What was done**
-The Unity Test Framework was added with separate EditMode and PlayMode assemblies, each with its own `asmdef`, covering the heart-loss path in both modes.
-
-EditMode constructs the manager in isolation, with no scene:
-
-```csharp
-var go = new GameObject("GameManager");
-var gameManager = go.AddComponent<GameManager>();
-gameManager.LoseHeart(3);
-Assert.IsTrue(gameManager.itsLose);
-```
-
-PlayMode runs the same assertion against a real loaded scene, catching anything that depends on scene wiring rather than on the class alone.
-
-**The part that took longest**
-Not the tests — the assembly definitions. Test assemblies need explicit references to the code under test and to the test framework, and until those are right the test files compile into nothing and the Test Runner shows an empty list with no error explaining why. That is a setup problem rather than a testing one, and it accounts for most of the friction in adding tests to an existing Unity project.
-
-**What isn't covered**
-Two tests on one system. Password validation and card categorization are both effectively pure functions and would be straightforward to cover.
-
-**Lesson**
-The valuable part of adding a test harness mid-project is the harness, not the coverage. Once `asmdef` files exist and the Test Runner lists something, writing the next test takes minutes. Before that, it takes an afternoon.
-
----
-
-## 4. Unity generates a lot that should never be committed
-
-**Symptom**
-The repository was carrying generated content — `Library/`, `Logs/`, `UserSettings/`, the `.sln` and every `.csproj`. Unity rebuilds those on open and regenerates them per machine, so they change constantly, conflict on merge, and add nothing.
-
-**Fix**
-A cleanup pass in March 2025 removed all of it and corrected `.gitignore`, alongside `.gitattributes` for Git LFS.
-
-**Why it matters more than it sounds**
-`Library/` alone can reach gigabytes. Beyond size, generated project files differ per machine and per Unity version, so they conflict on every collaboration and every version bump — and the conflicts are in files nobody wrote.
-
-**Lesson**
-Unity produces many files that look like project files and aren't. Getting `.gitignore` right at project creation takes five minutes; doing it later means rewriting history or living with the noise.
-
----
-
 ## Known limitations
 
 | Area | Current state | Better approach |
@@ -117,7 +69,7 @@ Unity produces many files that look like project files and aren't. Getting `.git
 | Input handling | Raycast-and-tag block duplicated per stage | One input service dispatching to stage handlers |
 | Object identity | String tags, no compile-time checking | Typed components or enums |
 | Progression storage | `PlayerPrefs` with string keys across several scripts | A serialized save model with keys in one place |
-| Test coverage | One system, two tests | Password validation and card categorization next |
+| Test coverage | Heart-loss system only | Password validation and card categorization are pure functions and directly testable |
 
 ## Working to a written specification
 
