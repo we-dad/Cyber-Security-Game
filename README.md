@@ -1,6 +1,8 @@
 <div align="center">
 
-# Cyber Security Game
+<img src="images/title-screen.png" width="620" alt="Cyber Hero title screen"/>
+
+# Cyber Hero
 
 **An Arabic educational game that teaches children the basics of staying safe online.**
 
@@ -17,50 +19,81 @@
 
 ## About
 
-A commissioned game built solo over roughly six weeks, to a written client specification. The brief was to teach three specific cyber security concepts to children — not to explain them, but to make players *do* them, so that the lesson comes out of the mechanic rather than out of a text box.
+Cyber Hero teaches children three online safety concepts — not by explaining them, but by making players *do* them, so the lesson comes out of the mechanic rather than out of a text box.
 
-Every level is a different genre, chosen so that the interaction itself carries the idea:
+Each stage is a different genre, chosen so the interaction itself carries the idea. A robot guide introduces every challenge, the whole game is voiced and written in Arabic, and players pick a character before starting.
 
-| Stage | What the player does | What they learn |
-|---|---|---|
-| **1** | Collects boxes of letters, numbers and symbols, then drags characters into password slots while a strength bar responds | Why mixing character types makes a password strong |
-| **2** | Shoots incoming viruses, and picks up a fresh shield each time the current one expires | The difference between a **firewall** (the shield that blocks) and an **antivirus** (the weapon that removes) |
-| **3** | Sorts information cards into "safe to share" and "never share" — a monster attacks on a wrong sort | Which personal information should stay private |
-| **4** | Answers three questions per completed stage to unlock the way forward | Consolidates all three lessons |
+<div align="center">
+  <img src="images/character-select.png" width="400" alt="Character selection"/>
+  <img src="images/robot-intro.png" width="400" alt="The robot guide introducing a challenge"/>
+</div>
 
-The whole game is in Arabic, including voiced dialogue and a robot guide who introduces each stage.
+Progress runs through a central hub — a locked door whose three icons unlock as each stage is cleared:
 
-**Role:** Solo developer — all programming, systems and integration. Art and audio were supplied by the client.
+<div align="center">
+  <img src="images/hub.png" width="500" alt="The hub door with stage icons"/>
+</div>
 
-## Features
+## The stages
 
-### Progression and feedback
+### 1 · Building a strong password
 
-Each stage runs on a shared layer: a tutorial before entry, a robot introduction, a countdown timer, a heart-based life system, and coins and stars awarded on performance. Losing all hearts replays the stage rather than ending the run, since the audience is children and a hard fail state teaches nothing.
+<img src="images/stage1-password.png" width="500" alt="Password building on a tablet"/>
 
-### End-of-game certificate
+Characters are collected from around the level and dragged into the slots of a tablet. A strength meter fills as the password gains variety, and the "create password" button only accepts a combination containing an uppercase letter, a lowercase letter, a number and a symbol.
 
-Finishing the game issues a personalized certificate with the player's name, and a report covering per-stage time and attempt count, total playtime, stars earned, and quiz accuracy. The same figures are sent to analytics, so the client can see where players actually struggle rather than guessing.
+Characters are reshuffled on every retry, so a failed attempt can't be solved by repeating a memorized sequence — the player has to apply the rule rather than the answer.
 
-### Accounts and persistence
+**The lesson:** why mixing character types is what makes a password strong.
 
-Players register and log in, with profile data stored server-side through **PlayFab**. Progress, coins, stars and per-stage timings persist locally, and a purchasable tag store lets players spend earned coins on cosmetic name tags.
+### 2 · Firewall and antivirus
 
-### Full Arabic support
+<img src="images/stage2-firewall.png" width="500" alt="Shooting viruses while shields expire"/>
 
-Unity's text rendering does not shape or order Arabic correctly on its own. The entire UI runs through RTL-aware text components, with an Arabic support layer handling letter joining and right-to-left ordering.
+Viruses advance on the player, who shoots them down while a shield holds them off. The shield expires, and a fresh one has to be collected before the next wave.
+
+The two mechanics are deliberately separate — a shield that *blocks* and a weapon that *removes* — because they represent two separate tools. A single "defence" mechanic would have collapsed the distinction the stage exists to teach.
+
+**The lesson:** the difference between a firewall and an antivirus.
+
+### 3 · What not to share
+
+<img src="images/stage3-cards.png" width="500" alt="Sorting information cards into red and green folders"/>
+
+Cards of personal information are sorted into two folders: green for things that are fine to share, red for things that aren't. Favourite colour, hobbies and favourite animal go one way; home address, email addresses and passwords go the other. A monster attacks when something private lands in the green folder.
+
+**The lesson:** which personal information should stay private.
+
+### 4 · The quiz
+
+Three questions per completed stage. Answering most of them correctly unlocks the way forward; failing sends the player back to revisit the material. Questions are authored as data assets rather than in code, so wording can be revised without a rebuild.
+
+## Progression
+
+<div align="center">
+  <img src="images/tutorial.png" width="400" alt="Movement tutorial"/>
+  <img src="images/stage-complete.png" width="400" alt="Stage complete with stars and coins"/>
+</div>
+
+Every stage shares one layer: a tutorial before entry, a countdown timer, three hearts, and stars and coins awarded on completion time and accuracy. Losing all hearts replays the stage rather than ending the run — the audience is children, and a hard fail state teaches nothing.
+
+Coins can be spent in a store on cosmetic name tags.
+
+## Certificate and report
+
+Finishing the game issues a personalized certificate with the player's name, alongside a report covering per-stage time and attempt count, total playtime, stars earned and quiz accuracy. The same figures are sent to analytics, making it possible to see where players actually struggle rather than guessing.
 
 ## Under the hood
 
-The three gameplay stages are genuinely different games — drag-and-drop, a shooter, and a sorting puzzle — that share one progression system. Each stage owns a `StageNRules` component holding only its own logic, while lives, timing, scoring, dialogue and scene flow live in a persistent `GameManager` that knows nothing about how any individual stage plays.
+The three gameplay stages are genuinely different games — drag-and-drop, a shooter, and a sorting puzzle — sharing one progression system. Each stage owns a `StageNRules` component holding only its own logic, while lives, timing, scoring, dialogue and scene flow live in a persistent `GameManager` that knows nothing about how any individual stage plays.
 
-Full write-up: **[ARCHITECTURE.md](ARCHITECTURE.md)**
+Full write-up: **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)**
 
 ## Problems worth reading about
 
-Delivering three distinct genres under one progression system, rendering Arabic correctly in Unity, and adding an automated test suite to a project already in flight:
+Three distinct genres under one progression system, rendering Arabic correctly in Unity, and adding an automated test suite to a project already in flight:
 
-**[CHALLENGES.md](CHALLENGES.md)**
+**[docs/CHALLENGES.md](docs/CHALLENGES.md)**
 
 ## Running it
 
