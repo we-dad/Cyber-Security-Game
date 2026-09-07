@@ -8,7 +8,6 @@
 ![Unity](https://img.shields.io/badge/Unity-2D-black?logo=unity)
 ![C#](https://img.shields.io/badge/C%23-gameplay-239120)
 ![Language](https://img.shields.io/badge/language-Arabic-lightgrey)
-![Project](https://img.shields.io/badge/type-client%20project-blue)
 
 **[▶ Play it here](https://wedad.itch.io/cyber-security-game)**
 
