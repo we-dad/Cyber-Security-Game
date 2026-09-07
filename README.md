@@ -54,13 +54,13 @@ Unity's text rendering does not shape or order Arabic correctly on its own. The 
 
 The three gameplay stages are genuinely different games — drag-and-drop, a shooter, and a sorting puzzle — that share one progression system. Each stage owns a `StageNRules` component holding only its own logic, while lives, timing, scoring, dialogue and scene flow live in a persistent `GameManager` that knows nothing about how any individual stage plays.
 
-Full write-up: **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)**
+Full write-up: **[ARCHITECTURE.md](ARCHITECTURE.md)**
 
 ## Problems worth reading about
 
 Delivering three distinct genres under one progression system, rendering Arabic correctly in Unity, and adding an automated test suite to a project already in flight:
 
-**[docs/CHALLENGES.md](docs/CHALLENGES.md)**
+**[CHALLENGES.md](CHALLENGES.md)**
 
 ## Running it
 
