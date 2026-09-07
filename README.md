@@ -91,7 +91,7 @@ Full write-up: **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)**
 
 ## Problems worth reading about
 
-Three distinct genres under one progression system, rendering Arabic correctly in Unity, and adding an automated test suite to a project already in flight:
+Two decisions that shaped the whole project — running three distinct genres under one progression system, and getting Arabic to render correctly in Unity:
 
 **[docs/CHALLENGES.md](docs/CHALLENGES.md)**
 
