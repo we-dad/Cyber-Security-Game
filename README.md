@@ -109,8 +109,6 @@ Open in Unity and load the main menu scene. PlayFab needs a title ID in its sett
 
 Tests live in `Assets/EditModeTests` and `Assets/PlayModeTests` and run from **Window → General → Test Runner**.
 
-> **Note on the browser build.** The game is not built for WebGL. Saved progress, accounts and cloud features depend on platform APIs that a browser build cannot reach, so it ships as a native desktop application instead.
-
 ## Built with
 
 | | |
