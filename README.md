@@ -6,12 +6,12 @@
 
 **An Arabic educational game that teaches children the basics of staying safe online.**
 
-[![Play on itch.io](https://img.shields.io/badge/Play-itch.io-fa5c5c?logo=itchdotio&logoColor=white)](https://wedad.itch.io/cyber-security-game)
 ![Unity](https://img.shields.io/badge/Unity-2D-black?logo=unity)
 ![C#](https://img.shields.io/badge/C%23-gameplay-239120)
+![Platform](https://img.shields.io/badge/platform-macOS-lightgrey?logo=apple)
 ![Language](https://img.shields.io/badge/language-Arabic-lightgrey)
 
-**[▶ Play it here](https://wedad.itch.io/cyber-security-game)**
+**[⬇ Download for macOS](../../releases/latest)**
 
 </div>
 
@@ -24,23 +24,19 @@ Cyber Hero teaches children three online safety concepts — not by explaining t
 Each stage is a different genre, chosen so the interaction itself carries the idea. A robot guide introduces every challenge, the whole game is voiced and written in Arabic, and players pick a character before starting.
 
 <div align="center">
-  <img src="images/character-select.png" width="400" alt="Character selection"/>
-  <img src="images/robot-intro.png" width="400" alt="The robot guide introducing a challenge"/>
+  <img src="images/character-select.png" width="420" alt="Character selection"/>
+  <img src="images/hub-tutorial.png" width="420" alt="The hub, with play instructions"/>
 </div>
 
-Progress runs through a central hub — a locked door whose three icons unlock as each stage is cleared:
-
-<div align="center">
-  <img src="images/hub.png" width="500" alt="The hub door with stage icons"/>
-</div>
+Progress runs through a central hub — a locked door whose icons unlock as each stage is cleared.
 
 ## The stages
 
 ### 1 · Building a strong password
 
-<img src="images/stage1-password.png" width="500" alt="Password building on a tablet"/>
+<img src="images/stage1-password.png" width="620" alt="Password building on a tablet"/>
 
-Characters are collected from around the level and dragged into the slots of a tablet. A strength meter fills as the password gains variety, and the "create password" button only accepts a combination containing an uppercase letter, a lowercase letter, a number and a symbol.
+Characters are collected around the level and dragged into the slots of a tablet. A strength meter fills as the password gains variety, and the "create password" button only accepts a combination containing an uppercase letter, a lowercase letter, a number and a symbol.
 
 Characters are reshuffled on every retry, so a failed attempt can't be solved by repeating a memorized sequence — the player has to apply the rule rather than the answer.
 
@@ -48,7 +44,7 @@ Characters are reshuffled on every retry, so a failed attempt can't be solved by
 
 ### 2 · Firewall and antivirus
 
-<img src="images/stage2-firewall.png" width="500" alt="Shooting viruses while shields expire"/>
+<img src="images/stage2-firewall.png" width="620" alt="Shooting viruses from inside a shield"/>
 
 Viruses advance on the player, who shoots them down while a shield holds them off. The shield expires, and a fresh one has to be collected before the next wave.
 
@@ -58,36 +54,38 @@ The two mechanics are deliberately separate — a shield that *blocks* and a wea
 
 ### 3 · What not to share
 
-<img src="images/stage3-cards.png" width="500" alt="Sorting information cards into red and green folders"/>
+<img src="images/stage3-cards.png" width="620" alt="Sorting information cards into red and green folders"/>
 
-Cards of personal information are sorted into two folders: green for things that are fine to share, red for things that aren't. Favourite colour, hobbies and favourite animal go one way; home address, email addresses and passwords go the other. A monster attacks when something private lands in the green folder.
+Cards of personal information are sorted into two folders: green for things that are fine to share, red for things that aren't. Hobbies, favourite food and favourite animal go one way; full name, parents' names, email addresses and health information go the other. A monster attacks when something private lands in the green folder.
 
 **The lesson:** which personal information should stay private.
 
 ### 4 · The quiz
+
+<img src="images/stage4-quiz.png" width="620" alt="A multiple-choice question about password strength"/>
 
 Three questions per completed stage. Answering most of them correctly unlocks the way forward; failing sends the player back to revisit the material. Questions are authored as data assets rather than in code, so wording can be revised without a rebuild.
 
 ## Progression
 
 <div align="center">
-  <img src="images/tutorial.png" width="400" alt="Movement tutorial"/>
-  <img src="images/stage-complete.png" width="400" alt="Stage complete with stars and coins"/>
+  <img src="images/stage-complete.png" width="420" alt="Stage complete, with stars and coins"/>
+  <img src="images/tags-store.png" width="420" alt="Spending coins on a name tag"/>
 </div>
 
-Every stage shares one layer: a tutorial before entry, a countdown timer, three hearts, and stars and coins awarded on completion time and accuracy. Losing all hearts replays the stage rather than ending the run — the audience is children, and a hard fail state teaches nothing.
+Every stage shares one layer: instructions before entry, a countdown timer, three hearts, and stars and coins awarded on completion time and accuracy. Losing all hearts replays the stage rather than ending the run — the audience is children, and a hard fail state teaches nothing.
 
-Coins can be spent in a store on cosmetic name tags.
+Coins buy cosmetic name tags — *Password Expert*, *Virus Fighter*, *Information Protector* — which display beside the player's name.
 
 ## Certificate and report
 
-Finishing the game issues a personalized certificate with the player's name, alongside a report covering per-stage time and attempt count, total playtime, stars earned and quiz accuracy. The same figures are sent to analytics, making it possible to see where players actually struggle rather than guessing.
+<img src="images/certificate.png" width="620" alt="End-of-game certificate"/>
+
+Finishing the game issues a personalized certificate with the player's name, per-stage time and attempt count, total playtime, stars earned and quiz accuracy. The same figures are sent to analytics, making it possible to see where players actually struggle rather than guessing.
 
 ## Under the hood
 
 The three gameplay stages are genuinely different games — drag-and-drop, a shooter, and a sorting puzzle — sharing one progression system. Each stage owns a `StageNRules` component holding only its own logic, while lives, timing, scoring, dialogue and scene flow live in a persistent `GameManager` that knows nothing about how any individual stage plays.
-
-Full write-up: **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)**
 
 ## Problems worth reading about
 
@@ -96,6 +94,10 @@ Two decisions that shaped the whole project — running three distinct genres un
 **[docs/CHALLENGES.md](docs/CHALLENGES.md)**
 
 ## Running it
+
+Download the latest macOS build from [Releases](../../releases/latest). A Windows build is planned.
+
+To build from source:
 
 ```bash
 git clone https://github.com/we-dad/Cyber-Security-Game.git
