@@ -11,7 +11,7 @@
 ![Platform](https://img.shields.io/badge/platform-macOS-lightgrey?logo=apple)
 ![Language](https://img.shields.io/badge/language-Arabic-lightgrey)
 
-**[⬇ Download for macOS](../../releases/latest)**
+**[⬇ Download](../../releases/latest)**
 
 </div>
 
