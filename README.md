@@ -87,6 +87,8 @@ Finishing the game issues a personalized certificate with the player's name, per
 
 The three gameplay stages are genuinely different games — drag-and-drop, a shooter, and a sorting puzzle — sharing one progression system. Each stage owns a `StageNRules` component holding only its own logic, while lives, timing, scoring, dialogue and scene flow live in a persistent `GameManager` that knows nothing about how any individual stage plays.
 
+Full write-up: **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)**
+
 ## Problems worth reading about
 
 Two decisions that shaped the whole project — running three distinct genres under one progression system, and getting Arabic to render correctly in Unity:
@@ -106,6 +108,8 @@ git clone https://github.com/we-dad/Cyber-Security-Game.git
 Open in Unity and load the main menu scene. PlayFab needs a title ID in its settings asset before accounts will connect; the game is otherwise playable offline.
 
 Tests live in `Assets/EditModeTests` and `Assets/PlayModeTests` and run from **Window → General → Test Runner**.
+
+> **Note on the browser build.** The game is not built for WebGL. Saved progress, accounts and cloud features depend on platform APIs that a browser build cannot reach, so it ships as a native desktop application instead.
 
 ## Built with
 
