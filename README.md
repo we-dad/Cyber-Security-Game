@@ -11,7 +11,7 @@
 ![Platform](https://img.shields.io/badge/platform-macOS-lightgrey?logo=apple)
 ![Language](https://img.shields.io/badge/language-Arabic-lightgrey)
 
-**[⬇ Download](../../releases/latest)**
+**[⬇ Download for macOS](../../releases/latest)**
 
 </div>
 
@@ -24,8 +24,8 @@ Cyber Hero teaches children three online safety concepts — not by explaining t
 Each stage is a different genre, chosen so the interaction itself carries the idea. A robot guide introduces every challenge, the whole game is voiced and written in Arabic, and players pick a character before starting.
 
 <div align="center">
-  <img src="images/character-select.png" width="420" alt="Character selection"/>
-  <img src="images/hub-tutorial.png" width="420" alt="The hub, with play instructions"/>
+  <img src="images/character-select.png" width="410" alt="Character selection"/>
+  <img src="images/hub-tutorial.png" width="410" alt="The hub, with play instructions"/>
 </div>
 
 Progress runs through a central hub — a locked door whose icons unlock as each stage is cleared.
@@ -69,8 +69,8 @@ Three questions per completed stage. Answering most of them correctly unlocks th
 ## Progression
 
 <div align="center">
-  <img src="images/stage-complete.png" width="420" alt="Stage complete, with stars and coins"/>
-  <img src="images/tags-store.png" width="420" alt="Spending coins on a name tag"/>
+  <img src="images/stage-complete.png" width="410" alt="Stage complete, with stars and coins"/>
+  <img src="images/tags-store.png" width="410" alt="Spending coins on a name tag"/>
 </div>
 
 Every stage shares one layer: instructions before entry, a countdown timer, three hearts, and stars and coins awarded on completion time and accuracy. Losing all hearts replays the stage rather than ending the run — the audience is children, and a hard fail state teaches nothing.
